@@ -1,0 +1,24 @@
+$DEV_MODE: $NODE_ENV == development;
+$MAX_INT32: 2147483647;
+
+//@import "cfg-vrhythm";
+//@import "cfg-grid";
+//@import "../../../node_modules/vrhythm/source/vrhythm";
+//@import "../../../node_modules/bs-grid-system/source/scss/bs-grid";
+//@import "../mixins";
+//@import "cfg-z-indexes";
+
+$wt-family-base: "Open Sans", sans-serif;
+$wt-family-head: "Roboto Slab", serif;
+$font-family-monospace:  "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
+
+//==
+//== Color palette
+//== ======================================= ==//
+
+$palette-light-blue: #3c8dbc; // Primary
+$palette-red       : #dd4b39; // Danger
+$palette-green     : #00a65a; // Success
+$palette-aqua      : #00c0ef; // Info
+$palette-yellow    : #f39c12; // Warning
+
