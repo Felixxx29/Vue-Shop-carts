@@ -1,5 +1,8 @@
 <template>
     <div class="v-catalog">
+        <router-link class="v-catalog__link_to_cart" to="/cart">
+                Cart: {{ this.calcCartItems }}
+        </router-link>
         <v-catalog-item
                 v-for="product in this.PRODUCTS"
                 :key="product.article"
@@ -16,7 +19,7 @@
 
     export default {
         name: "v-catalog",
-        components: { VCatalogItem},
+        components: {VCatalogItem},
         data() {
             return {}
         },
@@ -30,15 +33,18 @@
             }
         },
         computed: {
-            ...mapGetters(['PRODUCTS'])
+            ...mapGetters(['PRODUCTS','CART']),
+            calcCartItems(){
+                return this.CART.reduce((first,next) => {
+                    if (next.amount) {
+                        return first + next.amount
+                    }
+                    return first + 1
+                },0)
+            },
         },
         mounted() {
             this.GET_PRODUCTS_FROM_API()
-                .then(response => {
-                    if (response.data) {
-                        console.log('Data arrived')
-                    }
-                })
         },
     }
 </script>
@@ -49,5 +55,14 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        &__link_to_cart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: $padding*2;
+            border: 1px solid #eaeaea;
+            text-decoration: none;
+            color: black;
+        }
     }
 </style>

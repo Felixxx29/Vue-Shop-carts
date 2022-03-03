@@ -1,12 +1,13 @@
 <template>
     <div class="v-cart-item">
-        <img class="v-cart-item__image" :src="require('../assets/images/' + cart_item_data.image)" alt="">
+        <img class="v-cart-item__image" :src="require('/src/assets/images/' + cart_item_data.image)" alt="">
         <div class="v-cart-item__info">
             <p>{{cart_item_data.name}}</p>
-            <p>{{cart_item_data.price}}</p>
+            <p>{{ parseInt(cart_item_data.price) }}</p>
             <p>{{cart_item_data.article}}</p>
+            <p>{{cart_item_data.amount}}</p>
         </div>
-        <button>Delete</button>
+        <button @click="deleteFromCart">Delete</button>
     </div>
 </template>
 
@@ -21,6 +22,11 @@
                 }
             }
         },
+        methods: {
+            deleteFromCart() {
+                this.$emit('deleteFromCart')
+            }
+        }
     }
 </script>
 
@@ -37,5 +43,12 @@
 
     .v-cart-item__image {
         max-width: 50px;
+    }
+    .v-cart-item__info {
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-evenly;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 </style>
