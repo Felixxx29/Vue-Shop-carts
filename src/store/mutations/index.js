@@ -3,7 +3,7 @@ export default {
         state.products = products
     },
     SET_CART: (state, product) => {
-        if (state.cart.find(item => item === product)) {
+        if (state.cart.find(item => item.name === product.name)) {
             let idx = state.cart.indexOf(product)
             if (!state.cart[idx].amount) {
                 state.cart[idx].amount = 2
